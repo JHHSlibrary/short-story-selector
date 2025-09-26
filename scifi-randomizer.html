@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Story</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Loading a Random Story...</h1>
+  <p>Please wait a moment. If nothing happens, <a id="storyLink" href="#">click here</a>.</p>
+
+  <script>
+    // ===== EDIT THIS ARRAY =====
+    const storyURLs = [
+"https://short-story-selector.netlify.app/science-fiction/2BR02B.html",
+"https://short-story-selector.netlify.app/science-fiction/asleep-in-armageddon.html",
+"https://short-story-selector.netlify.app/science-fiction/con-fen.html",
+"https://short-story-selector.netlify.app/science-fiction/death-of-a-mutant.html",
+"https://short-story-selector.netlify.app/science-fiction/hanging-stranger.html",
+"https://short-story-selector.netlify.app/science-fiction/junior.html",
+"https://short-story-selector.netlify.app/science-fiction/little-journey.html",
+"https://short-story-selector.netlify.app/science-fiction/micro-man.html",
+"https://short-story-selector.netlify.app/science-fiction/monster-maker.html",
+"https://short-story-selector.netlify.app/science-fiction/morgue-ship.html",
+"https://short-story-selector.netlify.app/science-fiction/nightfall.html",
+"https://short-story-selector.netlify.app/science-fiction/nine-billion-names-of-god.html",
+"https://short-story-selector.netlify.app/science-fiction/people-soup.html",
+"https://short-story-selector.netlify.app/science-fiction/selling-point.html",
+"https://short-story-selector.netlify.app/science-fiction/the-eyes-have-it.html",
+"https://short-story-selector.netlify.app/science-fiction/the-star.html",
+"https://short-story-selector.netlify.app/science-fiction/youth.html",
+"https://short-story-selector.netlify.app/science-fiction/zero-hour.html"
+];
+      // Add more URLs here
+
+
+    // Pick a random URL
+    const randomIndex = Math.floor(Math.random() * storyURLs.length);
+    const selectedURL = storyURLs[randomIndex];
+
+    // Update link in case redirect fails
+    document.getElementById("storyLink").href = selectedURL;
+
+    // Redirect after 1.5 seconds
+    setTimeout(() => {
+      window.location.href = selectedURL;
+    }, 1500);
+  </script>
+</body>
+</html>
