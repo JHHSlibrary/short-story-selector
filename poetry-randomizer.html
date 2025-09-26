@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Story</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Loading a Random Story...</h1>
+  <p>Please wait a moment. If nothing happens, <a id="storyLink" href="#">click here</a>.</p>
+
+  <script>
+    // ===== EDIT THIS ARRAY =====
+    const storyURLs = [
+"https://short-story-selector.netlify.app/poetry/a-dream.html",
+"https://short-story-selector.netlify.app/poetry/a-remembrance.html",
+"https://short-story-selector.netlify.app/poetry/a-sweet-smell-memory-of-school.html",
+"https://short-story-selector.netlify.app/poetry/a_place_to_breathe.html",
+"https://short-story-selector.netlify.app/poetry/alienated.html",
+"https://short-story-selector.netlify.app/poetry/arbol.html",
+"https://short-story-selector.netlify.app/poetry/beonging.html",
+"https://short-story-selector.netlify.app/poetry/between-boys.html",
+"https://short-story-selector.netlify.app/poetry/bill_board.html",
+"https://short-story-selector.netlify.app/poetry/bridge.html",
+"https://short-story-selector.netlify.app/poetry/chase.html",
+"https://short-story-selector.netlify.app/poetry/chasing-the-american-dream.html",
+"https://short-story-selector.netlify.app/poetry/couples-skate.html",
+"https://short-story-selector.netlify.app/poetry/cracking.html",
+"https://short-story-selector.netlify.app/poetry/daniel-my-brother.html",
+"https://short-story-selector.netlify.app/poetry/dont-call-me-a-robot.html",
+"https://short-story-selector.netlify.app/poetry/envision.html",
+"https://short-story-selector.netlify.app/poetry/erased.html",
+"https://short-story-selector.netlify.app/poetry/family-stories.html",
+"https://short-story-selector.netlify.app/poetry/fill-me.html",
+"https://short-story-selector.netlify.app/poetry/five-poems.html",
+"https://short-story-selector.netlify.app/poetry/fragments.html",
+"https://short-story-selector.netlify.app/poetry/girls-playground.html",
+"https://short-story-selector.netlify.app/poetry/graduation.html",
+"https://short-story-selector.netlify.app/poetry/grandmother-and-the-sea.html",
+"https://short-story-selector.netlify.app/poetry/haibun.html",
+"https://short-story-selector.netlify.app/poetry/high-school.html",
+"https://short-story-selector.netlify.app/poetry/hunger-is-a-weapn.html",
+"https://short-story-selector.netlify.app/poetry/i-refuse-to-be-underestimated.html",
+"https://short-story-selector.netlify.app/poetry/illuminated.html",
+"https://short-story-selector.netlify.app/poetry/inheritance.html",
+"https://short-story-selector.netlify.app/poetry/jibaro-dreams.html",
+"https://short-story-selector.netlify.app/poetry/juneteenth-is-not-freedom.html",
+"https://short-story-selector.netlify.app/poetry/just-wordle.html",
+"https://short-story-selector.netlify.app/poetry/landover.html",
+"https://short-story-selector.netlify.app/poetry/let-me-tell-you-the-truth.html",
+"https://short-story-selector.netlify.app/poetry/m1ko-the-robot.html",
+"https://short-story-selector.netlify.app/poetry/mapping.html",
+"https://short-story-selector.netlify.app/poetry/messagechatgpt.html",
+"https://short-story-selector.netlify.app/poetry/moonscape.html",
+"https://short-story-selector.netlify.app/poetry/my-voice.html",
+"https://short-story-selector.netlify.app/poetry/north-dakota-snow-angels.html",
+"https://short-story-selector.netlify.app/poetry/peace-play.html",
+"https://short-story-selector.netlify.app/poetry/pebbles-in-my-palm.html",
+"https://short-story-selector.netlify.app/poetry/pitch-black.html",
+"https://short-story-selector.netlify.app/poetry/psalms-of-my-broken-heart.html",
+"https://short-story-selector.netlify.app/poetry/queen-of-bees.html",
+"https://short-story-selector.netlify.app/poetry/reality-bites.html",
+"https://short-story-selector.netlify.app/poetry/runaway.html",
+"https://short-story-selector.netlify.app/poetry/seed.html",
+"https://short-story-selector.netlify.app/poetry/star-gatherers.html",
+"https://short-story-selector.netlify.app/poetry/step-father.html",
+"https://short-story-selector.netlify.app/poetry/steps-for-making-carrot-halwa.html",
+"https://short-story-selector.netlify.app/poetry/techwright.html",
+"https://short-story-selector.netlify.app/poetry/there-must-be-a-gate.html",
+"https://short-story-selector.netlify.app/poetry/thesaurus.html",
+"https://short-story-selector.netlify.app/poetry/things-dont-work-like-they-used-to.html",
+"https://short-story-selector.netlify.app/poetry/tracks.html",
+"https://short-story-selector.netlify.app/poetry/unconstitutional.html",
+"https://short-story-selector.netlify.app/poetry/we-gather-here-together.html",
+"https://short-story-selector.netlify.app/poetry/we-need-stories.html",
+"https://short-story-selector.netlify.app/poetry/witness.html",
+"https://short-story-selector.netlify.app/poetry/wounded-healer.html",
+"https://short-story-selector.netlify.app/poetry/zit.ode.html"
+];
+      // Add more URLs here
+
+
+    // Pick a random URL
+    const randomIndex = Math.floor(Math.random() * storyURLs.length);
+    const selectedURL = storyURLs[randomIndex];
+
+    // Update link in case redirect fails
+    document.getElementById("storyLink").href = selectedURL;
+
+    // Redirect after 1.5 seconds
+    setTimeout(() => {
+      window.location.href = selectedURL;
+    }, 1500);
+  </script>
+</body>
+</html>
