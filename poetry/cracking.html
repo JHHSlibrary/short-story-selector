@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Story Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background-color: #fff;
+      color: #000;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 10px;
+      text-align: center;
+    }
+    header img {
+      max-width: 90%;
+      height: auto;
+    }
+    .story-info {
+      padding: 12px;
+      background-color: #f2f2f2;
+      text-align: center;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    .story-info strong {
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .iframe-container {
+      width: 100%;
+      height: 85vh;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    footer {
+      font-size: 0.75em;
+      padding: 12px;
+      text-align: center;
+      background-color: #f7f7f7;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CONFIG: Change these values per story -->
+  <script>
+    const storyTitle = "Cracking";
+    const category = "Poetry";
+    const length = "Short: <15-20 minutes reading time";
+    const source = "Just YA: Short Poems, Essays, & Fiction for Grades 7-12";
+    const storyURL = "https://open.library.okstate.edu/justya/chapter/cracking-karen-j-weyant/";
+  </script>
+
+  <header>
+    <img src="../images/Short-Stories-D214-header.jpg" alt="D214 Short Stories Header" />
+  </header>
+
+  <div class="story-info" id="storyMeta"></div>
+
+  <div class="iframe-container">
+    <iframe id="storyIframe" src="" sandbox="allow-scripts allow-same-origin"></iframe>
+  </div>
+
+<footer>
+  D214 Short Stories on Demand<br />
+  Story content remains the property of the original authors and/or the hosting sites, unless otherwise noted as public domain or Creative Commons.<br />
+  This platform was developed by the Academic Resource Center at John Hersey High School to promote literacy and engagement, and shared throughout District 214.<br />
+  For questions or copyright concerns, please contact <a href="mailto:jhhs.library@d214.org">jhhs.library@d214.org</a>.
+</footer>
+
+  <script>
+    // Apply title and metadata
+    document.title = storyTitle;
+    document.getElementById("storyMeta").innerHTML = `
+      <strong>Title:</strong> ${storyTitle}<br />
+      <strong>Category:</strong> ${category}<br />
+      <strong>Length:</strong> ${length}<br />
+      <strong>Source:</strong> ${source}
+    `;
+
+    // Load iframe
+    const iframe = document.getElementById("storyIframe");
+    iframe.src = storyURL;
+
+    // Redirect fallback if iframe fails
+    let redirectTimeout = setTimeout(() => {
+      window.location.href = storyURL;
+    }, 3000);
+
+    iframe.onload = () => {
+      clearTimeout(redirectTimeout);
+    };
+  </script>
+
+</body>
+</html>
+
