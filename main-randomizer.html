@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Story</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Loading a Random Story...</h1>
+  <p>Please wait a moment. If nothing happens, <a id="storyLink" href="#">click here</a>.</p>
+
+  <script>
+    // ===== EDIT THIS ARRAY =====
+    const storyURLs = [
+     "https://short-story-selector.netlify.app/student/I_walk.html"
+"https://short-story-selector.netlify.app/student/blindfolded.html"
+"https://short-story-selector.netlify.app/student/ive-stayed-in-the-front-yard.html"
+"https://short-story-selector.netlify.app/student/lifes_a_gamble.html"
+"https://short-story-selector.netlify.app/student/probability-of-vincent.html"
+"https://short-story-selector.netlify.app/student/pulled_apart.html"
+"https://short-story-selector.netlify.app/student/regrets.html"
+"https://short-story-selector.netlify.app/student/sea-tears.html"
+"https://short-story-selector.netlify.app/student/seventeen.html"
+"https://short-story-selector.netlify.app/student/the-sun-returns.html"
+"https://short-story-selector.netlify.app/science-fiction/2BR02B.html"
+"https://short-story-selector.netlify.app/science-fiction/asleep-in-armageddon.html"
+"https://short-story-selector.netlify.app/science-fiction/con-fen.html"
+"https://short-story-selector.netlify.app/science-fiction/death-of-a-mutant.html"
+"https://short-story-selector.netlify.app/science-fiction/hanging-stranger.html"
+"https://short-story-selector.netlify.app/science-fiction/junior.html"
+"https://short-story-selector.netlify.app/science-fiction/little-journey.html"
+"https://short-story-selector.netlify.app/science-fiction/micro-man.html"
+"https://short-story-selector.netlify.app/science-fiction/monster-maker.html"
+"https://short-story-selector.netlify.app/science-fiction/morgue-ship.html"
+"https://short-story-selector.netlify.app/science-fiction/nightfall.html"
+"https://short-story-selector.netlify.app/science-fiction/nine-billion-names-of-god.html"
+"https://short-story-selector.netlify.app/science-fiction/people-soup.html"
+"https://short-story-selector.netlify.app/science-fiction/selling-point.html"
+"https://short-story-selector.netlify.app/science-fiction/the-eyes-have-it.html"
+"https://short-story-selector.netlify.app/science-fiction/the-star.html"
+"https://short-story-selector.netlify.app/science-fiction/youth.html"
+"https://short-story-selector.netlify.app/science-fiction/zero-hour.html"
+"https://short-story-selector.netlify.app/relationships/a-bs-in-environmental-science.html"
+"https://short-story-selector.netlify.app/relationships/as-petals-fall.html"
+"https://short-story-selector.netlify.app/relationships/bittersweet.html"
+"https://short-story-selector.netlify.app/relationships/damien-32.html"
+"https://short-story-selector.netlify.app/relationships/house.html"
+"https://short-story-selector.netlify.app/relationships/how-i-need-a-hand.html"
+"https://short-story-selector.netlify.app/relationships/love-at-first-book.html"
+"https://short-story-selector.netlify.app/relationships/prompsoal.html"
+"https://short-story-selector.netlify.app/relationships/this-is-like-this.html"
+"https://short-story-selector.netlify.app/poetry/a-dream.html"
+"https://short-story-selector.netlify.app/poetry/a-remembrance.html"
+"https://short-story-selector.netlify.app/poetry/a-sweet-smell-memory-of-school.html"
+"https://short-story-selector.netlify.app/poetry/a_place_to_breathe.html"
+"https://short-story-selector.netlify.app/poetry/alienated.html"
+"https://short-story-selector.netlify.app/poetry/arbol.html"
+"https://short-story-selector.netlify.app/poetry/beonging.html"
+"https://short-story-selector.netlify.app/poetry/between-boys.html"
+"https://short-story-selector.netlify.app/poetry/bill_board.html"
+"https://short-story-selector.netlify.app/poetry/bridge.html"
+"https://short-story-selector.netlify.app/poetry/chase.html"
+"https://short-story-selector.netlify.app/poetry/chasing-the-american-dream.html"
+"https://short-story-selector.netlify.app/poetry/couples-skate.html"
+"https://short-story-selector.netlify.app/poetry/cracking.html"
+"https://short-story-selector.netlify.app/poetry/daniel-my-brother.html"
+"https://short-story-selector.netlify.app/poetry/dont-call-me-a-robot.html"
+"https://short-story-selector.netlify.app/poetry/envision.html"
+"https://short-story-selector.netlify.app/poetry/erased.html"
+"https://short-story-selector.netlify.app/poetry/family-stories.html"
+"https://short-story-selector.netlify.app/poetry/fill-me.html"
+"https://short-story-selector.netlify.app/poetry/five-poems.html"
+"https://short-story-selector.netlify.app/poetry/fragments.html"
+"https://short-story-selector.netlify.app/poetry/girls-playground.html"
+"https://short-story-selector.netlify.app/poetry/graduation.html"
+"https://short-story-selector.netlify.app/poetry/grandmother-and-the-sea.html"
+"https://short-story-selector.netlify.app/poetry/haibun.html"
+"https://short-story-selector.netlify.app/poetry/high-school.html"
+"https://short-story-selector.netlify.app/poetry/hunger-is-a-weapn.html"
+"https://short-story-selector.netlify.app/poetry/i-refuse-to-be-underestimated.html"
+"https://short-story-selector.netlify.app/poetry/illuminated.html"
+"https://short-story-selector.netlify.app/poetry/inheritance.html"
+"https://short-story-selector.netlify.app/poetry/jibaro-dreams.html"
+"https://short-story-selector.netlify.app/poetry/juneteenth-is-not-freedom.html"
+"https://short-story-selector.netlify.app/poetry/just-wordle.html"
+"https://short-story-selector.netlify.app/poetry/landover.html"
+"https://short-story-selector.netlify.app/poetry/let-me-tell-you-the-truth.html"
+"https://short-story-selector.netlify.app/poetry/m1ko-the-robot.html"
+"https://short-story-selector.netlify.app/poetry/mapping.html"
+"https://short-story-selector.netlify.app/poetry/messagechatgpt.html"
+"https://short-story-selector.netlify.app/poetry/moonscape.html"
+"https://short-story-selector.netlify.app/poetry/my-voice.html"
+"https://short-story-selector.netlify.app/poetry/north-dakota-snow-angels.html"
+"https://short-story-selector.netlify.app/poetry/peace-play.html"
+"https://short-story-selector.netlify.app/poetry/pebbles-in-my-palm.html"
+"https://short-story-selector.netlify.app/poetry/pitch-black.html"
+"https://short-story-selector.netlify.app/poetry/psalms-of-my-broken-heart.html"
+"https://short-story-selector.netlify.app/poetry/queen-of-bees.html"
+"https://short-story-selector.netlify.app/poetry/reality-bites.html"
+"https://short-story-selector.netlify.app/poetry/runaway.html"
+"https://short-story-selector.netlify.app/poetry/seed.html"
+"https://short-story-selector.netlify.app/poetry/star-gatherers.html"
+"https://short-story-selector.netlify.app/poetry/step-father.html"
+"https://short-story-selector.netlify.app/poetry/steps-for-making-carrot-halwa.html"
+"https://short-story-selector.netlify.app/poetry/techwright.html"
+"https://short-story-selector.netlify.app/poetry/there-must-be-a-gate.html"
+"https://short-story-selector.netlify.app/poetry/thesaurus.html"
+"https://short-story-selector.netlify.app/poetry/things-dont-work-like-they-used-to.html"
+"https://short-story-selector.netlify.app/poetry/tracks.html"
+"https://short-story-selector.netlify.app/poetry/unconstitutional.html"
+"https://short-story-selector.netlify.app/poetry/we-gather-here-together.html"
+"https://short-story-selector.netlify.app/poetry/we-need-stories.html"
+"https://short-story-selector.netlify.app/poetry/witness.html"
+"https://short-story-selector.netlify.app/poetry/wounded-healer.html"
+"https://short-story-selector.netlify.app/poetry/zit.ode.html"
+"https://short-story-selector.netlify.app/mystery/a-lamb-to-the-slaughter.html"
+"https://short-story-selector.netlify.app/horror/a-haunted-house.html"
+"https://short-story-selector.netlify.app/horror/black-cat.html"
+"https://short-story-selector.netlify.app/horror/diary-of-philip-westerly.html"
+"https://short-story-selector.netlify.app/horror/dont-think-about-it.html"
+"https://short-story-selector.netlify.app/horror/draculas-guest.html"
+"https://short-story-selector.netlify.app/horror/each-man-kills.html"
+"https://short-story-selector.netlify.app/horror/halloween-story.html"
+"https://short-story-selector.netlify.app/horror/horror-in-the-burying-ground.html"
+"https://short-story-selector.netlify.app/horror/listen-children.html"
+"https://short-story-selector.netlify.app/horror/monkeys-paw.html"
+"https://short-story-selector.netlify.app/horror/most-horrible-story.html"
+"https://short-story-selector.netlify.app/horror/my-jam-jar-ghost.html"
+"https://short-story-selector.netlify.app/horror/the-black-cat.html"
+"https://short-story-selector.netlify.app/horror/the-man-who-was-pale.html"
+"https://short-story-selector.netlify.app/horror/there-is-a-reaper.html"
+"https://short-story-selector.netlify.app/general-fiction/a-decent-human.html"
+"https://short-story-selector.netlify.app/general-fiction/a-random-strike.html"
+"https://short-story-selector.netlify.app/general-fiction/a-sisters-story.html"
+"https://short-story-selector.netlify.app/general-fiction/against-resilience.html"
+"https://short-story-selector.netlify.app/general-fiction/am_i_okay.html"
+"https://short-story-selector.netlify.app/general-fiction/an-occurence-at-owl-creek-bridge.html"
+"https://short-story-selector.netlify.app/general-fiction/bleed-and-bleed.html"
+"https://short-story-selector.netlify.app/general-fiction/blue-jay.html"
+"https://short-story-selector.netlify.app/general-fiction/bodies-of-water.html"
+"https://short-story-selector.netlify.app/general-fiction/dievas-x.html"
+"https://short-story-selector.netlify.app/general-fiction/do-not-go-gently.html"
+"https://short-story-selector.netlify.app/general-fiction/drive-by.html"
+"https://short-story-selector.netlify.app/general-fiction/eod.html"
+"https://short-story-selector.netlify.app/general-fiction/feathers.html"
+"https://short-story-selector.netlify.app/general-fiction/fly-of-a-pie.html"
+"https://short-story-selector.netlify.app/general-fiction/get_ready_with_me.html"
+"https://short-story-selector.netlify.app/general-fiction/goodwill.html"
+"https://short-story-selector.netlify.app/general-fiction/her_story.html"
+"https://short-story-selector.netlify.app/general-fiction/hot-lunch-petition.html"
+"https://short-story-selector.netlify.app/general-fiction/hunterlore.html"
+"https://short-story-selector.netlify.app/general-fiction/irl.html"
+"https://short-story-selector.netlify.app/general-fiction/joan-of-arc-sits-naked-in-her-dorm-room.html"
+"https://short-story-selector.netlify.app/general-fiction/lights-out.html"
+"https://short-story-selector.netlify.app/general-fiction/natural-selection.html"
+"https://short-story-selector.netlify.app/general-fiction/one-of-these-days.html"
+"https://short-story-selector.netlify.app/general-fiction/paper-elephants.html"
+"https://short-story-selector.netlify.app/general-fiction/shouting-is-at-least-talking.html"
+"https://short-story-selector.netlify.app/general-fiction/slip-kid.html"
+"https://short-story-selector.netlify.app/general-fiction/spare-the-rod.html"
+"https://short-story-selector.netlify.app/general-fiction/spontaneous-combustion.html"
+"https://short-story-selector.netlify.app/general-fiction/the-bus.html"
+"https://short-story-selector.netlify.app/general-fiction/the-listener.html"
+"https://short-story-selector.netlify.app/general-fiction/the-only-time-i-see-my-sister.html"
+"https://short-story-selector.netlify.app/general-fiction/the-reason.html"
+"https://short-story-selector.netlify.app/general-fiction/the-stillness-of-flight.html"
+"https://short-story-selector.netlify.app/general-fiction/the-water-is-wide.html"
+"https://short-story-selector.netlify.app/general-fiction/your-move-world.html"
+"https://short-story-selector.netlify.app/fantasy/honey-and-cold-stars.html"
+"https://short-story-selector.netlify.app/fantasy/how-to-talk-to-girs-at-parties.html"
+"https://short-story-selector.netlify.app/fantasy/last-stop-tomb-city.html"
+"https://short-story-selector.netlify.app/fantasy/of roses and kings.html"
+"https://short-story-selector.netlify.app/fantasy/piebald-hippogriff.html"
+"https://short-story-selector.netlify.app/fantasy/suddenwall.html"
+"https://short-story-selector.netlify.app/fantasy/the maiden thief.html"
+"https://short-story-selector.netlify.app/fantasy/the-case-of-the-four-and-twenty-blackbirds.html"
+"https://short-story-selector.netlify.app/fantasy/the-gorgon.htm"
+"https://short-story-selector.netlify.app/fantasy/turn-to-stone-ourselves.html"
+      // Add more URLs here
+    ];
+
+    // Pick a random URL
+    const randomIndex = Math.floor(Math.random() * storyURLs.length);
+    const selectedURL = storyURLs[randomIndex];
+
+    // Update link in case redirect fails
+    document.getElementById("storyLink").href = selectedURL;
+
+    // Redirect after 1.5 seconds
+    setTimeout(() => {
+      window.location.href = selectedURL;
+    }, 1500);
+  </script>
+</body>
+</html>
