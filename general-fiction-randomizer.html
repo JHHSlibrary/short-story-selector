@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Story</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Loading a Random Story...</h1>
+  <p>Please wait a moment. If nothing happens, <a id="storyLink" href="#">click here</a>.</p>
+
+  <script>
+    // ===== EDIT THIS ARRAY =====
+    const storyURLs = [
+"https://short-story-selector.netlify.app/general-fiction/a-decent-human.html",
+"https://short-story-selector.netlify.app/general-fiction/a-random-strike.html",
+"https://short-story-selector.netlify.app/general-fiction/a-sisters-story.html",
+"https://short-story-selector.netlify.app/general-fiction/against-resilience.html",
+"https://short-story-selector.netlify.app/general-fiction/am_i_okay.html",
+"https://short-story-selector.netlify.app/general-fiction/an-occurence-at-owl-creek-bridge.html",
+"https://short-story-selector.netlify.app/general-fiction/bleed-and-bleed.html",
+"https://short-story-selector.netlify.app/general-fiction/blue-jay.html",
+"https://short-story-selector.netlify.app/general-fiction/bodies-of-water.html",
+"https://short-story-selector.netlify.app/general-fiction/dievas-x.html",
+"https://short-story-selector.netlify.app/general-fiction/do-not-go-gently.html",
+"https://short-story-selector.netlify.app/general-fiction/drive-by.html",
+"https://short-story-selector.netlify.app/general-fiction/eod.html",
+"https://short-story-selector.netlify.app/general-fiction/feathers.html",
+"https://short-story-selector.netlify.app/general-fiction/fly-of-a-pie.html",
+"https://short-story-selector.netlify.app/general-fiction/get_ready_with_me.html",
+"https://short-story-selector.netlify.app/general-fiction/goodwill.html",
+"https://short-story-selector.netlify.app/general-fiction/her_story.html",
+"https://short-story-selector.netlify.app/general-fiction/hot-lunch-petition.html",
+"https://short-story-selector.netlify.app/general-fiction/hunterlore.html",
+"https://short-story-selector.netlify.app/general-fiction/irl.html",
+"https://short-story-selector.netlify.app/general-fiction/joan-of-arc-sits-naked-in-her-dorm-room.html",
+"https://short-story-selector.netlify.app/general-fiction/lights-out.html",
+"https://short-story-selector.netlify.app/general-fiction/natural-selection.html",
+"https://short-story-selector.netlify.app/general-fiction/one-of-these-days.html",
+"https://short-story-selector.netlify.app/general-fiction/paper-elephants.html",
+"https://short-story-selector.netlify.app/general-fiction/shouting-is-at-least-talking.html",
+"https://short-story-selector.netlify.app/general-fiction/slip-kid.html",
+"https://short-story-selector.netlify.app/general-fiction/spare-the-rod.html",
+"https://short-story-selector.netlify.app/general-fiction/spontaneous-combustion.html",
+"https://short-story-selector.netlify.app/general-fiction/the-bus.html",
+"https://short-story-selector.netlify.app/general-fiction/the-listener.html",
+"https://short-story-selector.netlify.app/general-fiction/the-only-time-i-see-my-sister.html",
+"https://short-story-selector.netlify.app/general-fiction/the-reason.html",
+"https://short-story-selector.netlify.app/general-fiction/the-stillness-of-flight.html",
+"https://short-story-selector.netlify.app/general-fiction/the-water-is-wide.html",
+"https://short-story-selector.netlify.app/general-fiction/your-move-world.html"
+];
+      // Add more URLs here
+
+
+    // Pick a random URL
+    const randomIndex = Math.floor(Math.random() * storyURLs.length);
+    const selectedURL = storyURLs[randomIndex];
+
+    // Update link in case redirect fails
+    document.getElementById("storyLink").href = selectedURL;
+
+    // Redirect after 1.5 seconds
+    setTimeout(() => {
+      window.location.href = selectedURL;
+    }, 1500);
+  </script>
+</body>
+</html>
